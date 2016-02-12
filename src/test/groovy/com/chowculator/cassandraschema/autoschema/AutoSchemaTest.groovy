@@ -51,4 +51,12 @@ class AutoSchemaTest extends Specification {
         0 * cql.createColumn(new EntityColumn(name: "column_exists", type: "text"), _, _)
         0 * cql.createColumn(new EntityColumn(name: "key", type: "text"), _, _)
     }
+
+    def "autoschema should create table"() {
+        when:
+        autoSchema.generate("exits", TableDne)
+        then:
+        1 * cql.createTable(_, _)
+        0 * cql.createColumn(_, _, _)
+    }
 }
