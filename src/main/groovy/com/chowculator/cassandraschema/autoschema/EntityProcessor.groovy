@@ -23,7 +23,7 @@ class EntityProcessor {
     static process(Class klass) {
         Entity entity = new Entity()
         Annotation annotation = klass.getDeclaredAnnotation(Table)
-        assert annotation != null
+        assert annotation != null : "Class is missing @Table annotation"
         entity.name = annotation.name()
 
         LinkedHashSet<EntityColumn> columns = new LinkedHashSet<>()

@@ -14,11 +14,14 @@ class CreateEntityTable {
             if(it != entity.partitionKeys.last())
                 cql += ", "
         }
-        cql += "), "
-        entity.clusteringKeys.forEach {
-            cql += it
-            if(it != entity.clusteringKeys.last())
-                cql += ", "
+        cql += ")"
+        if(entity.clusteringKeys != null && entity.clusteringKeys.size() > 0) {
+            cql += ", "
+            entity.clusteringKeys.forEach {
+                cql += it
+                if(it != entity.clusteringKeys.last())
+                    cql += ", "
+            }
         }
         cql += ") )"
     }

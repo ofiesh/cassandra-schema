@@ -1,5 +1,7 @@
-.gradle
 .idea
-*.iml
+target
 build
+*.iml
+.gradle
+
 !gradle-wrapper.jar
